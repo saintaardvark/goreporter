@@ -155,6 +155,7 @@ func (r *Reporter) Render() (err error) {
 // return a []byte data.
 func (r *Reporter) toJson() (err error) {
 	glog.Infof(fmt.Sprintf("Generating json report,time consuming %vs", time.Since(r.StartTime).Seconds()))
+	r.Score = int(r.GetFinalScore())
 	jsonReport, err := jsoniter.Marshal(r)
 	if err != nil {
 		return
